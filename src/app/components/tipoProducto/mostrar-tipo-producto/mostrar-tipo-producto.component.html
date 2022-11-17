@@ -1,0 +1,48 @@
+<div class="flex align-items-center justify-content-end bg-cyan-100">
+    <a 
+    pButton 
+    pRipple
+    label="Crear Categoría" 
+    class="bg-cyan-600"
+    [routerLink]="['/addtipoproductos']"></a>
+
+</div>
+<div>
+    <p-toast></p-toast>
+</div>
+<p-table [value]="tipoProductos" >
+    <ng-template pTemplate="header">
+        <tr>
+            <th>ID</th>
+            <th>nombre</th>
+            <th>Acciones</th>
+
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-tipoProductos>
+        <tr >
+            <td>{{tipoProductos.id}}</td>
+            <td>{{tipoProductos.nombreTipoProducto}}</td>
+            <td>
+                <a 
+                pButton 
+                pRipple
+                icon="pi pi-sync"
+                class="bg-cyan-600  mr-1"
+                [routerLink]="['/tipoproductos/edit', tipoProductos.id]">
+                </a>
+
+                <button 
+                type="button"
+                 pButton 
+                 pRipple
+                 icon="pi pi-eraser"
+                 class="bg-cyan-600  mr-1"
+                 (click)="eliminar(tipoProductos.id)">
+                </button>
+
+
+            </td>
+        </tr>
+    </ng-template>
+</p-table>

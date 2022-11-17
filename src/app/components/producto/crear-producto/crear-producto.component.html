@@ -1,0 +1,71 @@
+<div>
+    <p-toast></p-toast>
+  </div>
+  <form [formGroup]="form" novalidate (ngSubmit)="onSubmit()" class="p-3 bg-faded">
+  
+  
+        <div class="grid">
+          <div class="col-12 sm:col-6">
+              <div class="p-inputgroup mb-1">
+                  <input type="text" pInputText formControlName="nombreProducto" placeholder="Nombre"  title="nombreProducto">         
+              </div>
+          </div>
+
+          <div class="col-12 sm:col-6">
+            <div class="p-inputgroup mb-1 ">
+                  <input type="text" pInputText formControlName="marcaProducto" placeholder="Marca" title="marcaProducto" >          
+            </div>
+          </div>
+  
+        </div>
+  
+        <div class="grid">
+          <div class="col-12 sm:col-6">
+              <div class="p-inputgroup mb-1">
+                  <input type="text" pInputText formControlName="precioProducto" placeholder="Precio"  title="precioProducto">         
+              </div>
+          </div>
+  
+          <div class="col-12 sm:col-6">
+            <div class="p-inputgroup mb-1 ">
+                  <input type="email" pInputText formControlName="stockminProducto" placeholder="Stock" title="stockminProducto" >          
+            </div>
+          </div>
+          
+          <div class="col-12 sm:col-6">
+            <div class="p-inputgroup mb-1 ">
+                  <input type="email" pInputText formControlName="cantidadProducto" placeholder="Cantidad" title="cantidadProducto" >          
+            </div>
+          </div>
+
+          <div class="col-12 sm:col-6">
+            <label>
+              Seleccionar Producto:
+            </label>
+            <br>
+            <p-dropdown [options]="tipoProductos" formControlName="tipoProducto"  [(ngModel)]="seleccionarTipo" optionLabel="nombreTipoProducto"></p-dropdown>
+          </div>
+  
+  
+  
+        </div>
+  
+  
+  
+  
+      <div class="text-right">
+  
+          <div class="col-12 sm:col-6">
+  
+              <button pButton pRipple  type="submit"  icon="pi pi-check" label="Enviar" 
+              [disabled]="!form.valid" class="mt-4 mr-2">
+              </button>
+  
+              <button pButton pRipple  type="button"  icon="pi pi-times" label="Cancelar" 
+              class=" mr-2" (click)="cancel()">
+              </button>
+          </div>
+  
+      </div>
+    </form>
+  

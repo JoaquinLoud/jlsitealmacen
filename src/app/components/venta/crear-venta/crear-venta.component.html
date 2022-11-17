@@ -1,0 +1,137 @@
+<div>
+    <p-toast></p-toast>
+</div>
+<form id="formulario">
+    <h2>Agregar Producto</h2>
+
+   
+    <div class="container">
+        <div class="grid d-flex " *ngFor="let i of AddProductos">
+
+            <div class="col-5">
+                <label>
+                    Nombre Producto:
+                </label>
+                <select class="form-control" name="selectAction{{i}}" >
+                    <option *ngFor="let j of Producto" [value]="j.id">{{j.nombreProducto}}</option>
+                </select>
+            </div>
+            <div class="col-5">
+                <label>
+                    Cantidad:
+                </label>
+                <div class="p-inputgroup mb-1">
+                    <p-inputNumber  name="cantidad{{i}}"  placeholder="Cantidad" ></p-inputNumber>
+                </div>
+            </div>
+            <div class="col-2">
+                <button 
+                type="button"
+                pButton 
+                pRipple
+                icon="pi pi-eraser"
+                class="bg-cyan-600  mr-1"
+                (click)="eliminar(i)">
+            </button>
+            </div>
+    
+    
+        </div> 
+    </div>
+   
+
+    <div class="text-right">
+
+        <div class="col-4 sm:col-6">
+
+            <button pButton pRipple  type="submit" label="Agregar" (click)="agregar()" class="p-button-success mt-4 mr-2"></button>
+
+
+        </div>
+    </div>
+</form>
+<form [formGroup]="form" novalidate (ngSubmit)="onSubmit()" class="p-3 bg-faded" >
+
+
+    <h2>Finalizar Venta</h2>
+
+    <div class="grid">
+
+  
+
+        <div class="col-4">
+
+            <label>
+                Descuento:
+            </label>
+            <br>
+            <p-inputNumber [(ngModel)]="Descuento" formControlName="descuento"  placeholder="Descuento"></p-inputNumber>
+        </div>  
+
+        <!-- <div class="col-4 sm:col-6">
+            <div class="p-inputgroup mb-1">
+                <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                <p-inputNumber [(ngModel)]="Total"  formControlName="total" mode="decimal" [minFractionDigits]="2" placeholder="Total" ></p-inputNumber>
+            </div>
+        </div>   -->
+
+        <div class="col-4">
+            
+            <label>
+                Fecha de venta:
+            </label>
+            <br>
+            <p-calendar [(ngModel)]="dateValue" formControlName="fecha"  dateFormat="yy-mm-dd"></p-calendar>
+        </div> 
+
+        
+        <div class="col-4">
+            <label>
+                Seleccionar Cliente:
+            </label>
+            <br>
+            <p-dropdown [options]="Cliente" formControlName="cliente"  [(ngModel)]="seleccionarCliente" optionLabel="nombreCliente"></p-dropdown>
+        </div>
+
+        <div class="col-4">
+            <label>
+                Seleccionar Vendedor:
+            </label>
+            <br>
+            <p-dropdown [options]="Vendedor" formControlName="usuario"  [(ngModel)]="seleccionarVendedor" optionLabel="username"></p-dropdown>
+        </div>
+
+        <div class="col-4">
+            <h2>
+                SubTotal: {{SubTotal}}
+                
+            </h2>
+        </div>
+
+        <div class="col-4">
+            <h2>
+                Total: {{Total}}
+                
+            </h2>
+        </div>
+    </div>
+
+    
+    <div class="text-right">
+
+        <div class="col-4 sm:col-6">
+
+            <button pButton pRipple  type="submit"  icon="pi pi-check" label="Enviar" 
+            [disabled]="!form.valid" class="mt-4 mr-2">
+            </button>
+
+            <button pButton pRipple  type="button"  icon="pi pi-times" label="Cancelar" 
+            class=" mr-2" (click)="cancel()">
+            </button>
+
+            <button pButton pRipple  type="button" label="Calcular" (click)="calcular()" class="p-button-info mt-4 mr-2"></button>
+
+        </div>
+    </div>
+</form>
+

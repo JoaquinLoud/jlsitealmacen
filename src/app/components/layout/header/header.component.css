@@ -1,0 +1,30 @@
+/* .main {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content:space-between;
+    align-items: center;  
+}
+
+.logo {
+    flex-grow: 1;
+    }
+*/
+#logo-header {
+    width: 100px;
+    height: 100px;
+}
+/*
+.titulo {
+    flex-grow: 1;
+}
+
+.nav {
+    flex-grow: 3;
+} */
+
+
+/*
+Modo con PrimeFlex
+*/
+
+
